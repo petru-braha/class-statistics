@@ -22,6 +22,23 @@ ex8 = function()
   plot(x, y, type='l')
   b = x*y
   c = abs(x-y)/(sum(x-y)^2)
-  
-  d = 
 }
+
+ex9 = function(n, p)
+{
+  x=0:(n-1)
+  y=dgeom(x, p)
+  barplot(y, space=0, main='exercice 9 barplot', sub="done", xlab="x axis", ylab="y axis")
+}
+
+ex9 (15, 0.3)
+
+
+ex10 = function(n, lam)
+{
+  x=0:(n-1)
+  y=dpois(x, lam)
+  barplot(y, space=0, main='exercice 10 barplot', sub="done", xlab="x axis", ylab="y axis")
+}
+
+#ex10(15, 3)
