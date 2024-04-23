@@ -1,3 +1,4 @@
+#lab 1
 vector_sqrt = function(x) {
   for(i in 1:length(x)) {
     if(x[i] > 0)
@@ -31,9 +32,6 @@ ex9 = function(n, p)
   barplot(y, space=0, main='exercice 9 barplot', sub="done", xlab="x axis", ylab="y axis")
 }
 
-ex9 (15, 0.3)
-
-
 ex10 = function(n, lam)
 {
   x=0:(n-1)
@@ -41,4 +39,5 @@ ex10 = function(n, lam)
   barplot(y, space=0, main='exercice 10 barplot', sub="done", xlab="x axis", ylab="y axis")
 }
 
+#ex9 (15, 0.3)
 #ex10(15, 3)
