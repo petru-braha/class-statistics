@@ -3,9 +3,9 @@ ex1 <- function(x, p)
   U <- runif(1)
   actual <- 0
   
-  for(i in seq_along(pi))
+  for(i in seq_along(p))
   {
-    actual <- actual + pi[i]
+    actual <- actual + p[i]
     if(U <= actual)
       return(x[i])
   }
