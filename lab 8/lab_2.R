@@ -49,8 +49,7 @@ exII2 = function()
   median(female)
 }
 
-outliers_mean = function(x)
-{
+outliers_mean = function(x){
   m = mean(x)
   s = sd(x)
   
@@ -67,16 +66,7 @@ outliers_mean = function(x)
   return(outliers)
 }
 
-exIII1 = function(x)
-{
-  return(outliers_mean(x))
-}
-
-#x = c(1, 91, 38, 72, 13, 27, 11, 85, 5, 22, 20, 19, 8, 17, 11, 15, 13, 23, 14, 17
-#exIII1(x)
-
-outliers_iqr = function(x)
-{
+outliers_iqr = function(x){
   q_1 = as.vector(quantile(x))[2]
   q_3 = as.vector(quantile(x))[4]
   iqr = q_3 - q_1
@@ -94,15 +84,38 @@ outliers_iqr = function(x)
   return(outliers)
 }
 
+exIII1 = function(x)
+{
+  return(outliers_mean(x))
+}
+
+#exIII1(c(1, 91, 38, 72, 13, 27, 11, 85, 5, 22, 20, 19, 8, 17, 11, 15, 13, 23, 14, 17))
+
 exIII2 = function(x)
 {
   return(outliers_iqr(x))
 }
 
-exIII3() = function()
+exIII3 = function()
 {
   sample = scan("sample2.txt")
   summary(sample)
-  outliers_mean(sample)
-  outliers_iqr(sample)
+  
+  q = outliers_mean(sample)
+  w = outliers_iqr(sample)
+  
+  flag = T
+  if(length(q) != length(w))
+    flag = F
+  else
+  {
+    for(i in 1:length(q))
+      if(q[i] != w[i])
+        flag = F
+  }
+  
+  if(flag == F)
+    print("not equal")
+  else
+    print("equal")
 }

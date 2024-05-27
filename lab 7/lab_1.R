@@ -1,4 +1,3 @@
-#lab 1
 vector_sqrt = function(x) {
   for(i in 1:length(x)) {
     if(x[i] > 0)
@@ -8,8 +7,7 @@ vector_sqrt = function(x) {
   }
 }
 
-variance = function(x, p)
-{
+variance = function(x, p){
   expectation = sum(x*p)
   variance = sum(p*(x-expectation)^2)
   return (variance)
@@ -17,26 +15,26 @@ variance = function(x, p)
 
 ex8 = function()
 {
-  table= read.table("test.txt", header=T)
+  table = read.table("test.txt", header=T)
   x = table[['AA']]
   y = table[['BB']]
-  plot(x, y, type='l')
+  plot(x, y, type='l', main='exercice 8 barplot')
   b = x*y
   c = abs(x-y)/(sum(x-y)^2)
 }
 
-ex9 = function(n, p)
-{
-  x=0:(n-1)
-  y=dgeom(x, p)
-  barplot(y, space=0, main='exercice 9 barplot', sub="done", xlab="x axis", ylab="y axis")
-}
-
-ex10 = function(n, lam)
+ex9 = function(n, lam)
 {
   x=0:(n-1)
   y=dpois(x, lam)
-  barplot(y, space=0, main='exercice 10 barplot', sub="done", xlab="x axis", ylab="y axis")
+  barplot(y, space=0, main='exercice 9 barplot', xlab="x axis", ylab="y axis")
+}
+
+ex10 = function(n, p)
+{
+  x=0:(n-1)
+  y=dgeom(x, p)
+  barplot(y, space=0, main='exercice 10 barplot', xlab="x axis", ylab="y axis")
 }
 
 #ex9 (15, 0.3)

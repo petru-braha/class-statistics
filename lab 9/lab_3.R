@@ -1,17 +1,17 @@
 # exI1c
 density_I = function(mu, sigma) {
-  x = seq(mu - 4 * sigma, mu + 4 * sigma, length.out = 1000)
+  x = seq(mu - 4 * sigma, mu + 4 * sigma, length = 1000)
   y = dnorm(x, mean = mu, sd = sigma)
-  plot(x, y, col = "red")
+  plot(x, y, main = 'normal distribution')
 }
 
-exI1c()
+exI1c = function()
 {
   density_I(0, 1)
 }
 
 # exII2
-stundent_mean = function(n, df) {
+student_mean = function(n, df) {
   samples = rt(n, df = df)
   return(mean(samples))
 }
@@ -22,7 +22,7 @@ density_II = function(df, n_values) {
   colnames(results) = df
   for (i in 1:length(n_values)) {
     for (j in 1:length(df)) {
-      sample_mean = student_sample_mean(n_values[i], df[j])
+      sample_mean = student_mean(n_values[i], df[j])
       results[i, j] = sample_mean
     }
   }
