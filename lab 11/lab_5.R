@@ -1,4 +1,4 @@
-ex1 <- function(x, p)
+generation <- function(x, p)
 {
   U <- runif(1)
   actual <- 0
@@ -13,4 +13,7 @@ ex1 <- function(x, p)
   return(x[length(x)])
 }
 
-print(ex1(c(1, 2, 3), c(0.2, 0.5, 0.3)))
+ex1 <- function()
+{
+  cat("output:", generation(c(1, 2, 3), c(0.2, 0.5, 0.3)), "\n")
+}
