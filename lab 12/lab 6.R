@@ -105,7 +105,7 @@ test_proportion <- function(alpha, n, succeses, p0, type){
   if(type == 's')
     critical_z <- qnorm(1 - alpha/2)
   
-  cat(z_score, "\n", critical_z)
+  return(list(score = z_score, crit = critical_z))
 }
 
 exIV2 <- function()
@@ -117,10 +117,10 @@ exIV2 <- function()
   
   result <- test_proportion(alpha, n, successes, p0, 'l')
   
-  cat("z_score :", result$z, "\n")
-  cat("z_critical:", result$z_critical, "\n")
+  cat("z_score :", result$score, "\n")
+  cat("z_criti :", result$crit, "\n")
   
-  if (result$z > result$z_critical) 
+  if (result$score > result$crit) 
     cat("The percentage of defective components is significantly greater than 10% (we retain the alternative hypothesis).\n")
   else 
     cat("We cannot say that the percentage of defective components is significantly greater than 10% (we do not reject the null hypothesis).\n")
