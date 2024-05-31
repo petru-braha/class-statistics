@@ -35,7 +35,7 @@ exA1c = function(lambda)
   print(k0)
 }
 
-exA2a = function() # to review
+exA2a = function()
 {
   data = read.csv("note_PS.csv", header = T, sep = ',')
   p_mark = data[['P']]
@@ -47,23 +47,40 @@ exA2a = function() # to review
   absolute_s = table(s_mark)
   relative_s = absolute_s / length(s_mark)
   
-  p_mean = mean(p_mark)
-  s_mean = mean(s_mark)
+  # as random variables?
+  cat("media notelor la probabilitati este:", mean(p_mark), "\n") 
+  cat("media notelor la statistica este:", mean(s_mark), "\n")
 }
 
-exA2b = function(file_name, sample)
+exA2b = function(file_name, sample_name)
 {
-  values = read.table(file_name)
+  values = read.csv(file_name)
+  sample = values[[sample_name]]
   
   q1 = as.vector(quantile(sample))[2]
   q3 = as.vector(quantile(sample))[4]
   iqr = q3 - q1
-  for(i in 1:length(values))
-    if(values[i] < q1 + 1.5*iqr | values[i] > q3 + 1.5*iqr )
-    {
-      temp = values[i]
-      values[!values == temp]
-    }
+  for(i in 1:length(sample))
+  {
+    temp = sample[i]
+    if(temp < q1 - 1.5*iqr | temp > q3 + 1.5*iqr )
+      sample[!sample == temp]
+  }
   
-  return(values)
+  interval = seq(0, 10, by=1)
+  freq = hist(sample, breaks = interval, plot = FALSE)$counts
+  bin_midpoints = (interval[-length(interval)] + interval[-1]) / 2
+  
+  plot(bin_midpoints, freq, type = "b",
+       main = "frequency distribution",
+       xlab = "interval value", ylab = "frequency", xaxt="n")
+  axis(1, at=interval)
 }
+
+# calls: 
+
+# exA1a(3, 0.5, 10, 9, 1)
+# exA1b(3, 0.5, 10, 9, 1)
+# exA1c(3)
+# exA2a()
+# exA2b("note_PS.csv", "P")
