@@ -58,11 +58,11 @@ exIV1 = function()
   n = 100
   error = 1
   while (error > 0.005) {
-    x <- c(x, rgeom(n, 0.3))
-    y <- c(y, rgeom(n, 0.5))
-    p_new <- mean(x > y^2)
-    error <- qnorm(0.975)*sqrt(p_new*(1-p_new)/length(x))
-    n <- n + 100 
+    x = c(x, rgeom(n, 0.3))
+    y = c(y, rgeom(n, 0.5))
+    p_new = mean(x > y^2)
+    error = qnorm(0.975)*sqrt(p_new*(1-p_new)/length(x))
+    n = n + 100 
   }
   
   cat("estimated probability:", p, "\n")

@@ -173,10 +173,9 @@ exB4a <- function()
   cat("after", mean(results), "years the number of users will be 1500\n")
 }
 
-exB4b <- function()
+exB4b <- function(nr_simulations = 10000)
 {
   # considering that the amount of user can only increase
-  nr_simulations <- 10000
   n <- 1000
   p <- 1 / 4
   q <- 1 / 100
@@ -211,49 +210,14 @@ exB4b <- function()
   cat(results / nr_simulations, "is the required probability\n")
 }
 
-exBc <- function()
+exB4c <- function()
 {
-  
-  nr_simulations <- 10000
-  n <- 1000
-  p <- 1 / 4
-  q <- 1 / 100
-  
-  target <- 15000
-  time <- 40 + 10 / 12
-  results <- 0
-  
-  for(i in 1:nr_simulations)
-  {
-    users <- 10000
-    years <- 0
-    flag <- T # determines if the target number of users 
-    # is obtained after the specified amount of time
-    
-    while(years < 40 && flag == T) # forty years
-    {
-      users <- users + rbinom(1, n, p) - rbinom(1, users, q)
-      years <- years + 1
-      if(users > target)
-        flag <- F
-    }
-    
-    if(flag == T)
-    {
-      users <- users + (rbinom(1, n, p) - rbinom(1, users, q)) * 10 / 12
-      if(users <= target)
-        results <- results + 1
-    }
-  }
-  
-  probability <- results / nr_simulations
-  
-  margin_of_error <- 0.01
+  error_margin <- 0.01
   confidence_level <- 0.99
   alpha <- 1 - confidence_level
-  
-  z_critical <- qnorm(1 - (1 - confidence_level) / 2)
-  
-
-  # probability that after time => 
+  z <- qnorm(alpha / 2)
+  p <- 0.3
+  n_min <- p*(1 - p) * (z / error_margin)^2 + 1
+  cat("instead of 10000 simulations, we are using", n_min, "and ")
+  exB4b(n_min)
 }
