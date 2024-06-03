@@ -172,6 +172,7 @@ exC2a <- function(n)
 
 # b-----------------------------------------------------------------------------
 
+# somethings wrong
 exC2b <- function()
 {
   # we will use the amplification process for the algorithm
