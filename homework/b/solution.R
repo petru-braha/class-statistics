@@ -221,3 +221,12 @@ exB4c <- function()
   cat("instead of 10000 simulations, we are using", n_min, "and ")
   exB4b(n_min)
 }
+
+# calls:
+
+# exB1()
+# exB2()
+# exB3()
+# exB4a()
+# exB4b()
+# exB4c()

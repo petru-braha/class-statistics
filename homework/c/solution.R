@@ -190,3 +190,12 @@ exC2b <- function()
   
   cat("after", runs, "runs, the max cardinality found is", max_cut_cardinality)
 }
+
+# calls:
+
+# exC1a(15)
+# exC1b()
+# exC1c()
+# exC1d()
+# exC2a(15)
+# exC2b()

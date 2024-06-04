@@ -73,3 +73,9 @@ exD3 <- function()
   cat("for 1% level of significance", result1, "\n")
   cat("for 5% level of significance", result2, "\n")
 }
+
+# calls:
+
+# exD1()
+# exD2()
+# exD3()
